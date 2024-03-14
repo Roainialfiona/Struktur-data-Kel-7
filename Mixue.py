@@ -61,7 +61,27 @@ def main():
         print("4. selesai")
 
         pilihan = input("Masukkan pilihan Anda: ")
+        if pilihan == "1":
+            tampilkan_daftar_menu()
+            menu_pesanan = input("Masukkan nama menu yang ingin dipesan: ").lower()
+            if menu_pesanan in menu_harga:
+                keranjang_pesanan.tambah_menu(menu_pesanan, menu_harga[menu_pesanan])
+                print("Pesanan berhasil ditambahkan ke keranjang.")
+            else:
+                print("Menu tidak valid. Silakan pilih menu yang tersedia.")
+        elif pilihan == "2":
+            keranjang_pesanan.tampilkan_pesanan()
+        elif pilihan == "3":
+            total_harga = keranjang_pesanan.hitung_total_harga()
+            print(f"Total biaya yang harus dibayarkan adalah: {total_harga} rupiah")
+        elif pilihan == "4":
+            print("Terima kasih sudah memesan.")
+            break
+        else:
+            print("Pilihan tidak valid. Silakan pilih menu yang tersedia.")
 
+if __name__ == "__main__":
+    main()
 
 
 
